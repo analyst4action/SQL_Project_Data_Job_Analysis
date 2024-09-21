@@ -145,7 +145,7 @@ where these skills command an average annual salary of $140,500.  Other notable 
 
 
 ### 3.  Most In-demand Skills for the Data Analyst Role
-Query 3 looks at the most in-demand skills for the Data Analyst role by identifying the top 5 in-demand skills while focusing on all job postings.  
+Query 3 looks at the most in-demand skills for the Data Analyst role by identifying the top 5 in-demand skills without respect to salary while focusing on all job postings.  
 
 ```sql
 SELECT *
@@ -199,7 +199,7 @@ The top 5 skills for Data Analysts are SQL, Excel, Python, Tableau, and Power BI
 
 
 ### 4.  Top Skills Based on Salary for the Data Analyst Role
-Query 4 pursues the top skills based on salary by examining the average salary associated with each skill for Data Analyst positions.  It focuses on roles with specified salaies, regardless of location and rReveals how different skills impact salary levels for Data Analysts, helping to identify the most financially rewarding skills to acquire or improve.
+Query 4 pursues the top skills based on salary by examining the average salary associated with each skill for Data Analyst positions.  It focuses on roles with specified salaries, regardless of location and reveals how different skills impact salary levels for Data Analysts, helping to identify the most financially rewarding skills to acquire or improve.
 
 ```sql
 SELECT 
@@ -354,4 +354,4 @@ My personal interest in this project was for the sake of knowing what skills to 
 
 
 ### Closing Thoughts
-This project significantly enhanced my SQL and problem solving skills and provided an avenue for me to complete an entire project from questions to action (what are the skills and money returns for highly skilled data analysts).  I know what to focus on personally for continuing growth and development; and based on the data, I am confident that I can continue to move forward in pursuing the right skills for the roles I have targeted.
+This project significantly enhanced my SQL and problem solving skills and provided an avenue for me to complete an entire project from questions to action (what are the skills and money returns for highly skilled data analysts).  I now know what to focus on personally for my continuing growth and development; and based on the data, I am confident that I can continue to move forward in pursuing the right skills for the roles I have targeted.
