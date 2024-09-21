@@ -9,8 +9,8 @@ SELECT
     ,job_title
     ,job_location
     ,job_schedule_type 
-    ,salary_year_avg 
-    ,job_posted_date
+    ,ROUND(salary_year_avg,0) 
+    ,job_posted_date::DATE
     ,name AS company_name
 
 FROM 
@@ -31,5 +31,5 @@ AND job_schedule_type = 'Full-time'
 ORDER BY
     5 DESC
 LIMIT 
-    10
+    25
 ;

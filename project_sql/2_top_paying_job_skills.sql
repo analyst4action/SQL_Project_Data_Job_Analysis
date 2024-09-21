@@ -8,32 +8,34 @@ skills to develop that aligh with top salaries*/
 
 WITH top_paying_jobs AS (
 SELECT
-     job_id
-    ,job_title
-    ,salary_year_avg 
-    ,job_posted_date
+     j.job_id
+    ,j.job_title
+    ,ROUND(j.salary_year_avg,0) AS salary_year_avg
+    ,j.job_posted_date::DATE
     ,name AS company_name
 
 FROM 
-    job_postings_fact 
+    job_postings_fact j
 
 LEFT JOIN 
-    company_dim
+    company_dim c
 
 ON
-    job_postings_fact.company_id = company_dim.company_id
+    j.company_id = c.company_id
 
 WHERE 
-    job_title IN ('Data Analyst', 'Business Analyst') 
-AND job_location = 'Anywhere'
-AND salary_year_avg IS NOT NULL
-AND job_schedule_type = 'Full-time'
+    j.job_title IN ('Data Analyst', 'Business Analyst') 
+AND j.job_location = 'Anywhere'
+AND j.salary_year_avg IS NOT NULL
+AND j.job_schedule_type = 'Full-time'
 
 ORDER BY
     5 DESC
+
 LIMIT 
     10
 			)
+
 SELECT 
 	 top_paying_jobs.*
 	,s.skills
@@ -48,8 +50,8 @@ INNER JOIN
 ON
 	sj.skill_id = s.skill_id
 
-ORDER BY    
-    salary_year_avg DESC
+ORDER BY  
+  salary_year_avg DESC
 ;
 
 
