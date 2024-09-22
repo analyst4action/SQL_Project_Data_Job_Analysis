@@ -136,12 +136,13 @@ ORDER BY
 
 The top five skills for Data Analysts yielding the highest salaries in 2023 were the following:  Swift, Looker, Snowflake, SPSS, and Databricks.  Although not in the top five, Excel was tenth, Tableau eleventh, and SQL was fifteenth.
 
-![query 2 chart](project_sql\query2_chart_salaries_by_skill_data_analyst.png)
+![query 2 chart](project_sql/query2_chart_salaries_by_skill_data_analyst.png)
 
 The skills that correlate with the highest annual salaries are primarily associated with data analysis, programming, and business intelligence tools. Skills like Excel, Tableau, Looker, SQL, Python, and R are highly valued, especially at companies like Uber, 
 where these skills command an average annual salary of $140,500.  Other notable skills include Swift, SPSS, SAS, and Snowflake, which also offer competitive salaries.
 
-![query 2 table](project_sql\query2_table_Company_Skills_Salary.jpg)
+![query 2 table](project_sql/query2_table_Company_Skills_Salary.jpg)
+
 
 
 
@@ -195,7 +196,8 @@ LIMIT 5
 
 The top 5 skills for Data Analysts are SQL, Excel, Python, Tableau, and Power BI.  There is no significant change when this is narrowed to remote locations only; and the proportions remain relatively similar regardless of locale.
 
-![query 3 chart](project_sql\query3_chart_top5_data_analyst_skills.png)
+![query 3 chart](project_sql/query3_chart_top5_data_analyst_skills.png)
+
 
 
 
@@ -281,7 +283,8 @@ The top three high-demand skills based on average salary are so listed due to th
      - Couchbase is a NoSQL database and is known for its high performance and scalability, making it ideal for applications requiring real-time data processing and large-scale data management.
      - Watson -IBM's Watson offers advanced AI and machine learning capabilities, which are crucial for businesses looking to leverage AI for insights, automation, and enhanced decision-making.
 
-![query4 chart](project_sql\query4_chart_top3_skills_salary.png)
+![query4 chart](project_sql/query4_chart_top3_skills_salary.png)
+
 
 
 ### 5.  High-demand and High-salary Skills for Data Analyst Roles
@@ -327,9 +330,11 @@ LIMIT 25
 
 The 5 most in-demand skills for remote data analysts are the following: Python, Tableau, R, SAS, and Looker.  
 
-![query5 chart1](project_sql\chart_salary_skills_demand_data_analyst.png)
+![query5 chart1](project_sql/chart_salary_skills_demand_data_analyst.png)
 
-![query5 chart2](project_sql\chart2_salary_skills_demand_data_analyst.png)
+
+![query5 chart2](project_sql/chart2_salary_skills_demand_data_analyst.png)
+
 
 
 
