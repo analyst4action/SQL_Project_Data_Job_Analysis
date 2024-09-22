@@ -13,10 +13,10 @@ SQL queries here:  [project_sql](/project_sql/)
 
 # Background
 My curiousity in this project as a new data analyst is in identifying which skills to focus on for ongoing learning in my role in relation to those that correspond to higher salaries and are most in-demand. 
-I took this on as my first project associated with an SQL course offered by Luke Barousse and Kelly Adams. [SQL Course](https://lukebarousse.com/sql)
+I took this on as my first project associated with an SQL course offered by Luke Barousse and Kelly Adams.  I'm grateful to both of them for the course structure and instruction. [SQL Course](https://lukebarousse.com/sql)
 
 The questions I wanted to answer through my SQL queries were the following:
-1.  What are the top-paying jobs for my role?
+1.  What are the top-paying jobs for my interested roles (primarily data analyst and business analyst)?
 2.  What are the skills required for these top-paying roles?
 3.  What are the most in-demand skills for my role?
 4.  What are the top skills based on salary for my role?
@@ -24,24 +24,24 @@ The questions I wanted to answer through my SQL queries were the following:
 
 
 # Tools
-For my research into the data job market, I employed the following tools:
+For my research into the data job market, I leveraged the following tools:
 - **SQL:**  query and analysis
 
-- **Excel:**  pivots and charts and analysis
+- **Excel:**  pivot tables, charts, and analysis
 
-- **PostgreSQL and PG Admin:**  source of data job market data
+- **PostgreSQL and PG Admin:**  source of Data job market data
 
 - **Visual Studio Code:**  DB management/SQL query execution
 
-- **Git and GitHub:**  sharing, collaboration, tracking 
+- **Git and GitHub:**  sharing, tracking, and collaboration
 
 
 
 # Analysis
-Each of the five queries for this project were targeted at specific aspects of the data analyst job market.
+Each of the five queries for this project were targeted at specific aspects of the Data Analyst job market.
 
 ### 1.  Top-paying Data Analyst Jobs
-The purpose here was to identify the top 10 highest paying Data Analyst roles that are available remotely in 2023.  I actually filtered this initial query by both Data Analyst and Business Analyst in all possible locations for full time positions only.  The results set which is limited to 25 records highlights the top-paying opportunities for Data Analysts in which Business Analyst does not appear in the top 25.
+The purpose here was to identify the top 10 highest paying Data Analyst roles that are available remotely in 2023.  I actually filtered this initial query by both Data Analyst and Business Analyst in all possible locations for full-time positions only.  The results set which is limited to 25 records highlights the top-paying opportunities for Data Analysts and Business Analyst does not appear in the top 25.
 
 ```sql
 SELECT
@@ -58,7 +58,6 @@ FROM
 
 LEFT JOIN 
     company_dim
-
 ON
     job_postings_fact.company_id = company_dim.company_id
 
@@ -70,6 +69,7 @@ AND job_schedule_type = 'Full-time'
 
 ORDER BY
     5 DESC
+
 LIMIT 
     25
 ;
@@ -81,7 +81,7 @@ The top Data Analyst jobs in 2023 range in salary from $135K to $650K and includ
 
 
 ### 2.  Skills Required for these Top-paying Roles
-This uses the first query and adds in the skills required for the roles.  It provides a detailed look at which high-paying jobs demand certain skills, helping job seekers understand which skills to develop that aligh with top salaries.
+This second query uses the first query and adds in the skills required for the roles.  It provides a detailed look at which high-paying jobs demand certain skills, helping job seekers understand which skills to develop that aligh with top salaries.
 
 ```sql
 WITH top_paying_jobs AS (
@@ -97,7 +97,6 @@ FROM
 
 LEFT JOIN 
     company_dim c
-
 ON
     j.company_id = c.company_id
 
@@ -113,7 +112,6 @@ ORDER BY
 LIMIT 
     10
 			)
-
 SELECT 
 	 top_paying_jobs.*
 	,s.skills
@@ -131,15 +129,14 @@ ON
 ORDER BY  
   salary_year_avg DESC
 ;
-
 ```
 
-The top five skills for Data Analysts yielding the highest salaries in 2023 were the following:  Swift, Looker, Snowflake, SPSS, and Databricks.  Although not in the top five, Excel was tenth, Tableau eleventh, and SQL was fifteenth.
+The top five skills for Data Analyst yielding the highest salaries in 2023 were the following:  Swift, Looker, Snowflake, SPSS, and Databricks.  Although not in the top five, Excel was tenth, Tableau eleventh, and SQL was fifteenth.
 
 ![query 2 chart](project_sql/query2_chart_salaries_by_skill_data_analyst.png)
 
 The skills that correlate with the highest annual salaries are primarily associated with data analysis, programming, and business intelligence tools. Skills like Excel, Tableau, Looker, SQL, Python, and R are highly valued, especially at companies like Uber, 
-where these skills command an average annual salary of $140,500.  Other notable skills include Swift, SPSS, SAS, and Snowflake, which also offer competitive salaries.
+where these skills command an average annual salary of $140,500.  Other notable skills include Swift, SPSS, SAS, and Snowflake which also offer competitive salaries.
 
 ![query 2 table](project_sql/query2_table_Company_Skills_Salary.jpg)
 
@@ -147,7 +144,7 @@ where these skills command an average annual salary of $140,500.  Other notable 
 
 
 ### 3.  Most In-demand Skills for the Data Analyst Role
-Query 3 looks at the most in-demand skills for the Data Analyst role by identifying the top 5 in-demand skills without respect to salary while focusing on all job postings.  
+Query 3 looks at the most in-demand skills for the Data Analyst role by identifying the top 5 in-demand skills without respect to salary while focusing on ALL job postings.  
 
 ```sql
 SELECT *
@@ -162,6 +159,7 @@ ON j.job_id = sj.job_id
 INNER JOIN
 	skills_dim s
 ON sj.skill_id = s.skill_id
+
 LIMIT 5 
 ;
 
@@ -360,4 +358,5 @@ My personal interest in this project was for the sake of knowing what skills to 
 
 
 ### Closing Thoughts
-This project significantly enhanced my SQL and problem solving skills and provided an avenue for me to complete an entire project from questions to action (what are the skills and money returns for highly skilled data analysts).  I now know what to focus on personally for my continuing growth and development; and based on the data, I am confident that I can continue to move forward in pursuing the right skills for the roles I have targeted.
+This project significantly enhanced my SQL and problem solving skills and provided an avenue for me to complete an entire project from questions to action (what are the skills and money rewards for highly skilled data analysts).  I now know what to focus on personally for my continuing growth and development; and based on the data, I am confident that I can continue to move forward in pursuing the right skills for the roles I have targeted.
+Thanks for reviewing my project.  Hopefully,there information here you found helpful in one way or another.
