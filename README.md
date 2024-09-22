@@ -76,7 +76,7 @@ LIMIT
 ```
 The top Data Analyst jobs in 2023 range in salary from $135K to $650K and include companies like Mantys, Robert Half, and Uber.  
 
-![query 1 result](assets\query1_top10_Data_Analyst_Roles_CompanyName_and_Salary.png) assets/query1_top10_Data_Analyst_Roles_CompanyName_and_Salary.png
+![query 1 result](project_sql/query1_top10_Data_Analyst_Roles_CompanyName_and_Salary.png)
 
 
 
