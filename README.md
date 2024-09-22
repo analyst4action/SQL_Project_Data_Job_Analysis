@@ -359,4 +359,4 @@ My personal interest in this project was for the sake of knowing what skills to 
 
 ### Closing Thoughts
 This project significantly enhanced my SQL and problem solving skills and provided an avenue for me to complete an entire project from questions to action (what are the skills and money rewards for highly skilled data analysts).  I now know what to focus on personally for my continuing growth and development; and based on the data, I am confident that I can continue to move forward in pursuing the right skills for the roles I have targeted.
-Thanks for reviewing my project.  Hopefully,there information here you found helpful in one way or another.
+Thanks for reviewing my project.  Hopefully,there it contains information that you found helpful too.
