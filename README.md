@@ -235,7 +235,7 @@ ORDER BY 2 DESC
 
 LIMIT 25
 ;
-
+```
 
 ```sql
 SELECT 
@@ -269,7 +269,6 @@ ORDER BY 2 DESC
 
 LIMIT 25
 ;
-
 ```
 
 The top three high-demand skills based on average salary are so listed due to their critical roles in data processing, software development, and AI.  The following summary of the top three results comes from MS Bing Co-Pilot:
