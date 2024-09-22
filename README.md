@@ -13,7 +13,7 @@ SQL queries here:  [project_sql](/project_sql/)
 
 # Background
 My curiousity in this project as a new data analyst is in identifying which skills to focus on for ongoing learning in my role in relation to those that correspond to higher salaries and are most in-demand. 
-I took this on as my first project associated with an SQL course offered by Luke Barousse and Kelly Adams.  I'm grateful to both of them for the course structure and instruction. [SQL Course](https://lukebarousse.com/sql)
+I took this on as my first project associated with an SQL course offered by Luke Barousse and Kelly Adams.  I'm grateful to both of them for the course and instruction. [SQL Course](https://lukebarousse.com/sql)
 
 The questions I wanted to answer through my SQL queries were the following:
 1.  What are the top-paying jobs for my interested roles (primarily data analyst and business analyst)?
