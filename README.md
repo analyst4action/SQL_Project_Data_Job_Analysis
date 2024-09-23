@@ -46,6 +46,115 @@ The purpose here was to identify the top 10 highest paying Data Analyst roles th
 
 ```sql
 SELECT
+      DISTINCT(s.skills) AS Skills
+     ,j.job_title_short
+     ,s.skill_id
+     ,j.job_id
+     ,j.salary_year_avg
+
+FROM
+	skills_dim s
+
+INNER JOIN
+	skills_job_dim sj
+
+ON
+	sj.skill_id = s.skill_id
+
+INNER JOIN
+	job_postings_fact j	
+
+ON
+	j.job_id = sj.job_id
+
+WHERE
+	j.job_title_short LIKE '%Analyst%'
+
+GROUP BY
+	1,2,5
+
+ORDER BY 
+	5 DESC
+;
+```
+
+
+```sql
+SELECT 
+	 j.job_title_short AS Job_Title
+	,ROUND(AVG(j.salary_year_avg)) AS Avg_Sal
+	,s.skills
+        ,COUNT(s.skills) AS Count
+
+FROM 
+	skills_dim s
+
+LEFT JOIN 
+	skills_job_dim sj
+
+ON
+	s.skill_id = sj.skill_id
+
+LEFT JOIN
+	job_postings_fact j 
+
+ON 
+	j.job_id = sj.job_id
+
+WHERE
+	s.skills = 'sql'
+
+GROUP BY
+	1,3
+
+ORDER BY
+	4 DESC
+;
+ 
+```
+
+
+```sql
+SELECT
+	 j.job_title_short AS Title
+	,j.job_location AS Location
+	,j.job_posted_date AT TIME ZONE 'UTC' AT TIME ZONE 'EST' AS Date
+	,EXTRACT(MONTH FROM j.job_posted_date) AS Date_Month
+	,EXTRACT(YEAR FROM j.job_posted_date) AS Year
+
+FROM
+	job_postings_fact j
+LIMIT
+	5
+;
+
+
+SELECT
+	 j.job_title_short
+	,COUNT(j.job_id) AS Job_Posted_Count
+	,EXTRACT(MONTH FROM j.job_posted_date) AS Date_Month
+	
+FROM
+	job_postings_fact j
+
+WHERE
+	j.job_title_short = 'Data Analyst'
+
+GROUP BY
+	2
+
+ORDER BY 
+	2 DESC
+;
+
+
+```
+
+
+
+
+```sql
+SELECT
      job_id
     ,job_title
     ,job_location
@@ -83,6 +192,35 @@ The top Data Analyst jobs in 2023 range in salary from $135K to $650K and includ
 
 ### 2.  Skills Required for these Top-paying Roles
 This second query uses the first query and adds in the skills required for the roles.  It provides a detailed look at which high-paying jobs demand certain skills, helping job seekers understand which skills to develop that aligh with top salaries.
+
+```sql
+SELECT
+	 j.job_title_short
+	,j.job_location
+	,CASE WHEN j.job_location = 'Anywhere' THEN 'Remote'
+	      WHEN j.job_location = 'New Yord, NY' THEN 'Local'
+	      ELSE 'Onsite' END AS location_category 	
+FROM
+	job_postings_fact j
+;
+
+SELECT	
+	 COUNT(j.job_id) AS number_of_jobs
+	,CASE WHEN j.job_location = 'Anywhere' THEN 'Remote'
+	      WHEN j.job_location = 'New York, NY' THEN 'Local'
+	      ELSE 'Onsite' END AS location_category 	
+FROM
+	job_postings_fact j
+
+WHERE
+	j.job_title_short = 'Data Analyst'
+
+GROUP BY
+	2
+;
+
+```
+
 
 ```sql
 WITH top_paying_jobs AS (
@@ -255,6 +393,93 @@ The top three high-demand skills based on average salary are so listed due to th
 This last query identifies skills in high demand associated with high average salaries for Data Analyst roles.  It concentrates on remote positions with specified salaries and targets skills that offer job security (high demand) and financial benefits (high salaries), offering strategic insights for career development in data analysis.
 
 ```sql
+WITH skills_demand AS (
+			SELECT 
+				 s.skill_id
+				,s.skills
+				,COUNT(sj.job_id) AS demand_count
+
+			FROM 
+				job_postings_fact j
+
+			INNER JOIN 
+				skills_job_dim sj
+			ON j.job_id = sj.job_id
+
+			INNER JOIN
+				skills_dim s
+			ON sj.skill_id = s.skill_id
+
+			WHERE
+				j.job_title_short = 'Data Analyst'
+
+			AND j.salary_year_avg IS NOT NULL
+
+			AND j.job_work_from_home = TRUE
+
+			GROUP BY
+				s.skill_id
+                       )
+
+    ,average_salary AS (
+			SELECT 
+				 s.skill_id
+				,s.skills
+				,ROUND(AVG(j.salary_year_avg),0) AS avg_salary
+			      --,COUNT(sj.job_id) AS demand_count
+
+			FROM 
+				job_postings_fact j
+
+			INNER JOIN 
+				skills_job_dim sj
+			ON j.job_id = sj.job_id
+
+			INNER JOIN
+				skills_dim s
+			ON sj.skill_id = s.skill_id
+
+			WHERE
+				j.job_title_short = 'Data Analyst'
+
+			AND j.salary_year_avg IS NOT NULL
+
+			AND j.job_work_from_home = TRUE
+
+			GROUP BY
+				s.skill_id
+
+                       )
+
+SELECT
+	 skills_demand.skill_id
+	,skills_demand.skills
+	,demand_count
+	,avg_salary
+
+FROM
+	skills_demand
+
+INNER JOIN
+	average_salary
+	
+ON
+	skills_demand.skill_id = average_salary.skill_id
+
+WHERE
+	demand_count > 10
+
+ORDER BY	
+	3 DESC,4 DESC
+
+LIMIT 25
+;
+
+```
+
+
+```sql
+--the previous CTE query is more streamlined below
 SELECT 
 	 s.skill_id
 	,s.skills
