@@ -237,40 +237,6 @@ LIMIT 25
 ;
 ```
 
-```sql
-SELECT 
-	 s.skills
-	,ROUND(AVG(j.salary_year_avg),0) AS avg_salary
-      --,COUNT(sj.job_id) AS demand_count
-
-FROM 
-	job_postings_fact j
-
-INNER JOIN 
-	skills_job_dim sj
-ON j.job_id = sj.job_id
-
-INNER JOIN
-	skills_dim s
-ON sj.skill_id = s.skill_id
-
-WHERE
-	j.job_title_short = 'Data Analyst'
-
-AND j.salary_year_avg IS NOT NULL
-
-AND j.job_work_from_home = TRUE
-
-
-GROUP BY
-	s.skills
-
-ORDER BY 2 DESC
-
-LIMIT 25
-;
-```
-
 The top three high-demand skills based on average salary are so listed due to their critical roles in data processing, software development, and AI.  The following summary of the top three results comes from MS Bing Co-Pilot:
 
 1. PySpark ($208,172): a powerful tool for big data processing and analytics. Its integration with Apache Spark allows for efficient handling of large datasets, making it highly valuable in industries that rely on data-driven decision-making.
