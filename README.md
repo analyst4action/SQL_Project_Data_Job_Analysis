@@ -151,6 +151,36 @@ ORDER BY
 ```
 
 
+```sql
+WITH remote_job_skills AS (
+	SELECT
+		 sj.skill_id
+		,COUNT(*) AS skill_count
+	FROM
+		skills_job_dim AS sj
+	INNER JOIN
+		job_postings_fact AS j	
+	ON 	j.job_id = sj.job_id
+	WHERE
+		j.job_work_from_home = true
+	AND j.job_title_short = 'Data Analyst'	
+	GROUP BY 
+		1	
+                            )
+SELECT
+	 s.skill_id
+	,skills AS skil_name
+	,skill_count
+FROM 
+	remote_job_skills
+INNER JOIN
+	skills_dim s
+ON
+	s.skill_id = remote_job_skills.skill_id
+ORDER BY 3 DESC
+LIMIT 5 
+;
+```
 
 
 ```sql
