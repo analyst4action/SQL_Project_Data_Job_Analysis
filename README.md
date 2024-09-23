@@ -558,7 +558,7 @@ The 5 most in-demand skills for remote data analysts are the following: Python, 
 
 
 # What I Learned
-This was my first project outside of my professional environment and has proven to be a great learning experience for me.  From an SQL standpoint, it included a good mix of intermediate and advanced concepts like JOINS, SUBQUERIES, CTE's, AGGREGATIONS, GROUP BY, HAVING, ROUND, Date Functions, and various Filtering and Sorting.  
+This was my first project outside of my professional environment and has proven to be a great learning experience for me.  From an SQL standpoint, it included a good mix of intermediate and advanced concepts like CASE, JOINS, SUBQUERIES, CTE's, AGGREGATIONS, GROUP BY, HAVING, ROUND, Date Functions, and various Filtering and Sorting.  
 
 My personal interest in this project was for the sake of knowing what skills to pursue for my own growth and development.  My revised learning path for data analysis is now driven by the data contained in this project as well as my awareness of what is in demand for my current and prospective professional roles.
 
